@@ -1,5 +1,5 @@
 {
-  "name": "beloved's-peaceful-pursuit",
+  "name": "mental-health-support-platform-api",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -9,9 +9,9 @@
     "dev": "ts-node src/index.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "Tatyana Cuttino",
   "license": "ISC",
-  "description": "",
+  "description": "Capstone 4 - Mental Health Support Platform API",
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
     "@types/express": "^5.0.0",
