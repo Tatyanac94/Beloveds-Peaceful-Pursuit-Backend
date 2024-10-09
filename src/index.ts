@@ -1,24 +1,39 @@
 import express from 'express';
-import cors from 'cors';
 import bodyParser from 'body-parser';
-import routes from './api/routes'; // Import the routes defined in the routes folder
-import { errorHandler } from './api/middleware/errorHandlerMiddleware'; // Error handling middleware
+import dotenv from 'dotenv';
+import forumRoutes from './api/routes/forumRoutes';
+import postRoutes from './api/routes/postRoutes';
+import commentRoutes from './api/routes/commentRoutes';
+import postLikeRoutes from './api/routes/postLikeRoutes';
+import commentLikeRoutes from './api/routes/commentLikeRoutes';
+import { errorHandler } from './api/middleware/errorHandler';
 
+// Load environment variables from .env file
+dotenv.config();
+
+// Create an instance of the express application
 const app = express();
-const PORT = process.env.PORT || 4000; // Set your desired port
 
 // Middleware
-app.use(cors()); // Enable CORS
-app.use(bodyParser.json()); // Parse JSON request bodies
-app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded request bodies
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// Use routes
-app.use('/api', routes); // Prefix all routes with '/api'
+app.get('/', (req, res) => {
+  res.send('Welcome to the Mental Health Support Platform API!');
+});
+
+// Define routes
+app.use('/forums', forumRoutes);
+app.use('/posts', postRoutes);
+app.use('/comments', commentRoutes);
+app.use('/post-likes', postLikeRoutes);
+app.use('/comment-likes', commentLikeRoutes);
 
 // Error handling middleware
-app.use(errorHandler); // Use your centralized error handler
+app.use(errorHandler);
 
 // Start the server
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });

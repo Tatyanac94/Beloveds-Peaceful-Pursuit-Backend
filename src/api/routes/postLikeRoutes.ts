@@ -3,6 +3,7 @@ import { likePost } from '../controllers/postLikeController';
 
 const router = Router();
 
-router.post('/:postId/likes', likePost);
+// Define routes for post likes
+router.post('/', likePost);
 
 export default router;

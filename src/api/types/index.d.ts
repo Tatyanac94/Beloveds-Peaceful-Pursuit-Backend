@@ -1,30 +1,19 @@
-export interface Forum {
-  id: number;
-  title: string;
-}
+import { Comment, Forum, Post, PostLike, CommentLike } from '../models/index';
 
-export interface Post {
-  id: number;
-  content: string;
-  forumId: number;
-  timestamp: Date;
-}
+declare global {
+  namespace Express {
+    interface Request {
+      user?: { // If I decide to implement authentication in the future
+        id: string; // or number, based on the user model
+        username: string;
+      };
+    }
+  }
 
-export interface Comment {
-  id: number;
-  content: string;
-  postId: number;
-  timestamp: Date;
-}
-
-export interface PostLike {
-  id: number;
-  postId: number; // Use camelCase for consistency
-  userId: string; // Use camelCase for consistency
-}
-
-export interface CommentLike {
-  id: number;
-  commentId: number; // Use camelCase for consistency
-  userId: string; // Use camelCase for consistency
+  // My additional types are declared here
+  type CommentType = Comment;
+  type ForumType = Forum;
+  type PostType = Post;
+  type PostLikeType = PostLike;
+  type CommentLikeType = CommentLike;
 }
