@@ -15,7 +15,7 @@ export interface Comment {
   export interface Post {
     id: number;
     forumId: number;
-    user_id: string; // or username if you changed it
+    username?: string;
     content: string;
     timestamp: Date;
   }
@@ -23,12 +23,14 @@ export interface Comment {
   export interface PostLike {
     id: number;
     postId: number;
+    username?: string;
     timestamp: Date;
   }
   
   export interface CommentLike {
     id: number;
     commentId: number;
+    username?: string;
     timestamp: Date;
   }
   
