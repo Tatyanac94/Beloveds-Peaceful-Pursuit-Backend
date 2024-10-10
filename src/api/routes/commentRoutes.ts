@@ -3,7 +3,6 @@ import { createComment, getCommentsByPost } from '../controllers/commentControll
 
 const router = Router();
 
-// Define routes for comments
 router.post('/', createComment);
 router.get('/:postId', getCommentsByPost);
 
