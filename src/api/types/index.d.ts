@@ -3,14 +3,12 @@ import { Comment, Forum, Post, PostLike, CommentLike } from '../models/index';
 declare global {
   namespace Express {
     interface Request {
-      user?: { // If I decide to implement authentication in the future
-        id: string; // or number, based on the user model
-        username: string;
-      };
+      // If I decide to implement user-related features in the future, I can add this later
+      username?: string; // Optional username for anonymous users
     }
   }
 
-  // My additional types are declared here
+  // Additional type aliases for convenience
   type CommentType = Comment;
   type ForumType = Forum;
   type PostType = Post;
