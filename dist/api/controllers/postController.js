@@ -28,7 +28,6 @@ const getPostsByForum = (req, res) => {
     });
 };
 exports.getPostsByForum = getPostsByForum;
-// New function to get all posts
 const getAllPosts = (req, res) => {
     supabaseClient_1.supabase
         .from('supportpost')
